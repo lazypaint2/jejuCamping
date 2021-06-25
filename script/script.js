@@ -22,6 +22,45 @@ $(function(){
        $('#content').load(href)
    })
 
+
+
+   $('header a.logo2').click(function(e){
+    e.preventDefault()
+
+    var href=$(this).attr('href')
+    $('#content').load(href)
+})
+   // menu
+
+
+   var sw = 1
+   $('.bar').click(function (e) {
+       e.preventDefault()
+       if (sw == 1) { 
+           $('ul.mainmenu').stop().slideDown()
+           $('.bar img').attr({'src': 'img/main1/close.png'})
+           sw=0
+           // alert(sw)
+       }else{ 
+           $('ul.mainmenu').stop().slideUp()
+           $('.bar img').attr({'src': 'img/main1/bar.png'})
+           sw=1
+       }
+   });
+   
+   $(window).resize(function () {
+       var wid = $(this).width()
+       if (wid >= 767) {
+           $('ul.mainmenu').css({'display': 'flex'})
+       } else {
+           $('ul.mainmenu').css({'display': 'none'})
+           $('.bar img').attr({'src': 'img/main1/bar.png'})
+           sw = !sw
+       }
+   });
+
+
+   
    //intro
    window.onload = function() { 
      setTimeout(function(){
